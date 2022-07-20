@@ -18,6 +18,7 @@ int main(){
 
     getData(no_of_employees,emp);
     display(no_of_employees,emp);
+    return 0;
 }
 
 void getData(int no_of_employees,struct Employee *emp){
