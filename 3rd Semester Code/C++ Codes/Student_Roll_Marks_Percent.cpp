@@ -177,45 +177,15 @@ void showOutputOfParticularPercentageRange(int no_of_students,struct Student *st
         stu++;
     }
 }
-
-
 void sortTheArray(int no_of_students,struct Student *stu){
     struct Student temp;
     struct Student *pointer = stu;
     for(int i = 0;i<no_of_students-1;i++){
         for(int j=0;j<no_of_students-1-i;j++){
             if(stu->total_marks>=(stu+1)->total_marks){
-                temp.name = stu->name ;
-                temp.roll_no = stu->roll_no;
-                temp.total_marks = stu->total_marks;
-                temp.percentage = stu->percentage;
-                temp.marks_in_chem = stu->marks_in_chem;
-                temp.marks_in_comp = stu->marks_in_comp;
-                temp.marks_in_eng = stu->marks_in_eng;
-                temp.marks_in_maths = stu->marks_in_maths;
-                temp.marks_in_phy = stu->marks_in_phy;
-
-
-                stu->name = (stu+1)->name;
-                stu->roll_no = (stu+1)->roll_no;
-                stu->total_marks = (stu+1)->total_marks;
-                stu->percentage = (stu+1)->percentage;
-                stu->marks_in_chem = (stu+1)->marks_in_chem;
-                stu->marks_in_comp = (stu+1)->marks_in_comp;
-                stu->marks_in_eng = (stu+1)->marks_in_eng;
-                stu->marks_in_maths = (stu+1)->marks_in_maths;
-                stu->marks_in_phy = (stu+1)->marks_in_phy;
-
-
-                (stu+1)->name = temp.name;
-                (stu+1)->roll_no = temp.roll_no;
-                (stu+1)->total_marks = temp.total_marks;
-                (stu+1)->percentage = temp.percentage;
-                (stu+1)->marks_in_chem = temp.marks_in_chem;
-                (stu+1)->marks_in_comp = temp.marks_in_comp;
-                (stu+1)->marks_in_eng = temp.marks_in_eng;
-                (stu+1)->marks_in_maths = temp.marks_in_maths;
-                (stu+1)->marks_in_phy = temp.marks_in_phy;
+                temp = *stu;
+                *stu = *(stu+1);
+                *(stu+1) = temp;
             }
             stu++;
         }
