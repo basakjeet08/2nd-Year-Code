@@ -11,5 +11,5 @@ int main(){
     else
         printf("Odd");
 
-
+    return 0 ;
 }
