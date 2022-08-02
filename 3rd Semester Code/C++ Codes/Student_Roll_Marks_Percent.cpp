@@ -130,9 +130,6 @@ void sortArray(struct Student *stu,int student_count){
     for(int i = 0;i<student_count-1;i++){
         for(int j=0;j<student_count-1-i;j++){
             if(stu->total_marks>=(stu+1)->total_marks){
-                // temp = *stu;
-                // *stu = *(stu+1);
-                // *(stu+1) = temp;
                 swap(*stu,*(stu+1));
             }
             stu++;
