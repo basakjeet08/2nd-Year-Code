@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <algorithm>
 using namespace std;
 struct Student {
     string name;
@@ -41,6 +42,13 @@ void getData(struct Student* stu,int student_count){
         stu++;
     }
 }
+void findTotalPercentage(struct Student* stu,int student_count){
+    for(int i = 0;i<student_count;i++){
+        stu->total_marks = stu->marks[0]+stu->marks[1]+stu->marks[2]+stu->marks[3]+stu->marks[4];
+        stu->percentage = (float)stu->total_marks/5.0;
+        stu++;
+    }
+}
 void menuOfTheProgram(struct Student* stu,int student_count){
     int choice ;
     do{
@@ -53,7 +61,6 @@ void menuOfTheProgram(struct Student* stu,int student_count){
         cout << "5. Exit\n";
         cout << "\nEnter Your Choice : ";
         cin >> choice ;
-
         switch(choice){
             case 1 :
                 showData(stu,student_count);
@@ -83,10 +90,18 @@ void menuOfTheProgram(struct Student* stu,int student_count){
         }
     }while(choice!=5);
 }
-void findTotalPercentage(struct Student* stu,int student_count){
+void showData(struct Student* stu, int student_count){
     for(int i = 0;i<student_count;i++){
-        stu->total_marks = stu->marks[0]+stu->marks[1]+stu->marks[2]+stu->marks[3]+stu->marks[4];
-        stu->percentage = (float)stu->total_marks/5.0;
+        cout << "Details of Student "<< i+1 <<" : \n";
+        cout << "Name : " << stu->name << endl;
+        cout << "Roll : " << stu->roll << endl ;
+        cout << "Marks : ";
+        for(int j = 0;j<5;j++)
+            cout << stu->marks[j]<<" ";
+        cout << "\n";
+        cout << "Total Marks : " << stu->total_marks << endl;
+        cout << "Percentage : " << stu->percentage << endl ;
+        cout << "\n\n";
         stu++;
     }
 }
@@ -109,30 +124,16 @@ void showData(struct Student *stu,int student_count,float lb,float ub){
         stu++;
     }
 }
-void showData(struct Student* stu, int student_count){
-    for(int i = 0;i<student_count;i++){
-        cout << "Details of Student "<< i+1 <<" : \n";
-        cout << "Name : " << stu->name << endl;
-        cout << "Roll : " << stu->roll << endl ;
-        cout << "Marks : ";
-        for(int j = 0;j<5;j++)
-            cout << stu->marks[j]<<" ";
-        cout << "\n";
-        cout << "Total Marks : " << stu->total_marks << endl;
-        cout << "Percentage : " << stu->percentage << endl ;
-        cout << "\n\n";
-        stu++;
-    }
-}
 void sortArray(struct Student *stu,int student_count){
     struct Student temp;
     struct Student *pointer = stu;
     for(int i = 0;i<student_count-1;i++){
         for(int j=0;j<student_count-1-i;j++){
             if(stu->total_marks>=(stu+1)->total_marks){
-                temp = *stu;
-                *stu = *(stu+1);
-                *(stu+1) = temp;
+                // temp = *stu;
+                // *stu = *(stu+1);
+                // *(stu+1) = temp;
+                swap(*stu,*(stu+1));
             }
             stu++;
         }
