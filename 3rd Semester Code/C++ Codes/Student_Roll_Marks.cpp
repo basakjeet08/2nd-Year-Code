@@ -1,60 +1,48 @@
 #include <iostream>
 #include <string>
-using namespace std;
-
+using namespace std ;
 struct Student{
+    int roll;
     string name;
-    int roll_no;
-    int marks_in_phy,marks_in_eng,marks_in_maths,marks_in_comp,marks_in_chem;
-
+    int marks[5];
 };
-
-void getData(int , struct Student* );
-void showOutput(int , struct Student* );
+void showData(struct Student *,int);
+void getData(struct Student*,int);
 int main(){
     int no_of_students;
-
     cout << "Enter the Number of Students : ";
     cin >> no_of_students;
     cin.ignore();
-    
-    struct Student stu[no_of_students];
-    getData(no_of_students,stu);
-    showOutput(no_of_students,stu);
+    struct Student S[no_of_students];
+    getData(S,no_of_students);
+    showData(S,no_of_students);
     return 0;
 }
-void getData(int no_of_students,struct Student* stu){
-    for(int i=0;i<no_of_students;i++){
-        cout << "Enter the Name : ";
+void getData(struct Student* stu,int no_of_students){
+    for(int i = 0;i<no_of_students;i++){
+        cout << "Enter Details of Student " << i+1 << " : \n";
+        cout << "Name : ";
         getline(cin,stu->name);
-        cout << "Enter the Roll No : ";
-        cin >> stu->roll_no;
-        cout << "Enter the Marks in Physics : ";
-        cin >> stu->marks_in_phy;
-        cout << "Enter the Marks in Maths : ";
-        cin >> stu->marks_in_maths;
-        cout << "Enter the Marks in English : ";
-        cin >> stu->marks_in_eng;
-        cout << "Enter the Marks in Computer : ";
-        cin >> stu->marks_in_comp;
-        cout << "Enter the Marks in Chemistry : ";
-        cin >> stu->marks_in_chem;
+        cout << "Roll No. : ";
+        cin >> stu->roll;
+        cout << "Enter the Marks in a single Line with space : ";
+        for(int j=0;j<5;j++)
+            cin >> stu->marks[j];
         cin.ignore();
-
+        cout << "\n\n";
         stu++;
     }
 }
-
-void showOutput(int no_of_students , struct Student *stu){
-    cout << ("\n\n");
-    for(int i=0;i<no_of_students;i++){
-        cout << "Enter the Name : " << stu->name<<"\n";
-        cout << "Enter the Roll No : " <<stu->roll_no<< "\n";
-        cout << "Enter the Marks in Physics : "<<stu->marks_in_phy << "\n";
-        cout << "Enter the Marks in Maths : " << stu->marks_in_maths << "\n";
-        cout << "Enter the Marks in English : " << stu->marks_in_eng << "\n";
-        cout << "Enter the Marks in Computer : "<<stu->marks_in_comp << "\n";
-        cout << "Enter the Marks in Chemistry : "<<stu->marks_in_chem << "\n";
+void showData(struct Student* stu, int no_of_students){
+    for(int i = 0;i<no_of_students;i++){
+        cout << "Details of Student "<< i+1 <<" : \n";
+        cout << "Name : " << stu->name << endl;
+        cout << "Roll : " << stu->roll << endl ;
+        cout << "Marks : ";
+        for(int j = 0;j<5;j++)
+            cout << stu->marks[i]<<" ";
+        cout << "\n\n";
         stu++;
     }
+
 }
