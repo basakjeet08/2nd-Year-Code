@@ -10,7 +10,6 @@ struct Railway{
 };
 int main(){
     struct Railway train[5];
-
     for(int i = 0;i<5;i++){
         printf("Enter the Details of Train %d\n",i+1);
         printf("Name : ");
@@ -32,13 +31,10 @@ int main(){
             train[i].timer.hour = ((train[i].time[0]-'0')*10)+(train[i].time[1]-'0') +12;
             train[i].timer.min = ((train[i].time[3]-'0')*10)+(train[i].time[4]-'0');
         }
-            
-
     }
     printf("\nThe Details of the Trains :---\n");
     for(int i = 0;i<5;i++){
         printf("Name : %s --- Time : %d:%d\n",train[i].name,train[i].timer.hour,train[i].timer.min);
-
     }
     return 0;
 }
