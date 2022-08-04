@@ -150,7 +150,6 @@ void display(struct employee* emp,int nos){
 }
 
 
-
 // #include <stdio.h>
 // #include <string.h>
 // struct date{
