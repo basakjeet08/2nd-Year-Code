@@ -30,17 +30,17 @@ int main(){
         stu[i].total = sum;
         getchar();
 
-        if(stu[i].total >=90)
+        if(stu[i].total >=450)
             stu[i].grade = 'O';
-        else if(stu[i].total >=450)
-            stu[i].grade = 'E';
         else if(stu[i].total >=400)
-            stu[i].grade = 'A';
+            stu[i].grade = 'E';
         else if(stu[i].total >=350)
-            stu[i].grade = 'B';
+            stu[i].grade = 'A';
         else if(stu[i].total >=300)
-            stu[i].grade = 'C';
+            stu[i].grade = 'B';
         else if(stu[i].total >=250)
+            stu[i].grade = 'C';
+        else if(stu[i].total >=200)
             stu[i].grade = 'D';
         else
             stu[i].grade = 'F';
