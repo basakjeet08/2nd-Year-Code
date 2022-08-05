@@ -19,6 +19,7 @@ void sortJoin(struct employee* , int);
 void sortSalary(struct employee* , int);
 void replaceArray(struct employee* , struct date , struct date);
 void display(struct employee* , int );
+void swap(struct employee*);
 int main(){
     int nos;
     printf("Enter the Number of Employees : ");
@@ -75,11 +76,8 @@ void sortName(struct employee* emp , int nos){
     struct employee* pointer = emp;
     for(int i = 0;i<nos-1;i++){
         for(int j = 0;j<nos-1-i;j++){
-            if(strcmp(emp->name, (emp+1)->name) > 0){
-                temp = *emp;
-                *emp = *(emp+1);
-                *(emp+1) = temp;
-            }
+            if(strcmp(emp->name, (emp+1)->name) > 0)
+                swap(emp);
             emp++;
         }
         emp = pointer;
@@ -107,32 +105,20 @@ void sortJoin(struct employee* emp , int nos){
 }
 void replaceArray(struct employee* emp , struct date d1,struct date d2){
     struct employee temp;
-    if(d1.year > d2.year){
-        temp = *emp;
-        *emp = *(emp+1);
-        *(emp+1) = temp;
-    }
-    else if((d1.year == d1.year)&&(d1.month > d2.month)){
-        temp = *emp;
-        *emp = *(emp+1);
-        *(emp+1) = temp;
-    }
-    else if((d1.month == d2.month) && (d1.day > d2.day)){
-        temp = *emp;
-        *emp = *(emp+1);
-        *(emp+1) = temp;
-    }
+    if(d1.year > d2.year)
+        swap(emp);
+    else if((d1.year == d1.year)&&(d1.month > d2.month))
+        swap(emp);
+    else if((d1.month == d2.month) && (d1.day > d2.day))
+        swap(emp);
 }
 void sortSalary(struct employee* emp , int nos){
     struct employee* pointer = emp;
     struct employee* temp;
     for(int i = 0;i<nos-1;i++){
         for(int j = 0;j<nos-1-i;j++){
-            if(emp->salary > (emp+1)->salary){
-                *(temp) = *(emp);
-                *(emp) = *(emp+1);
-                *(emp+1) = *(temp);
-            }
+            if(emp->salary > (emp+1)->salary)
+                swap(emp);
             emp++;
         }
         emp = pointer;
@@ -148,8 +134,12 @@ void display(struct employee* emp,int nos){
         emp++;
     }
 }
-
-
+void swap(struct employee* emp){
+    struct employee temp ;
+    temp = *emp;
+    *emp = *(emp+1);
+    *(emp+1) = temp;
+}
 // #include <stdio.h>
 // #include <string.h>
 // struct date{
