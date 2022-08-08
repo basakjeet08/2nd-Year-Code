@@ -12,7 +12,10 @@ class Complex{
             cin >> img;
         }
         void showData(int i){
-            cout << real << "+i" << img << endl;
+            if (img >= 0)
+                cout<<real<<" + i"<<img;
+            else
+                cout<<real<<" - i"<<-img;
         }
 };
 int main(){
