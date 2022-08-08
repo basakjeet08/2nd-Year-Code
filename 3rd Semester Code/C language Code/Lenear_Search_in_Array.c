@@ -1,7 +1,7 @@
 #include <stdio.h>
 int main(){
     int nos;
-    printf("Enter teh Elements of Array : ");
+    printf("Enter the number of Elements of Array : ");
     scanf("%d",&nos);
     int arr[nos];
     printf("Enter the Elements of Array with spaces: ");
