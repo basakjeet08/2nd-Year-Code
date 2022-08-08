@@ -16,12 +16,12 @@ class Complex{
         }
 };
 int main(){
-    Complex cm[3];
-    for(int i=0;i<3;i++)
+    Complex cm[10];
+    for(int i=0;i<10;i++)
         cm[i].getData(i);
     cout << endl;
     cout << "Details of the Complex Numbers are :---\n";
-    for(int i=0;i<3;i++)
+    for(int i=0;i<10;i++)
         cm[i].showData(i);
     return 0;
 }
