@@ -8,7 +8,6 @@ struct Employee{
 };
 void getData(int , struct Employee*);
 void display(int , struct Employee*);
-
 int main(){
     int no_of_employees;
 
@@ -20,7 +19,6 @@ int main(){
     display(no_of_employees,emp);
     return 0;
 }
-
 void getData(int no_of_employees,struct Employee *emp){
 
     for (int i = 0;i<no_of_employees;i++)
@@ -40,7 +38,6 @@ void getData(int no_of_employees,struct Employee *emp){
         emp++;
     }
 }
-
 void display(int no_of_employees,struct Employee *emp){
     printf("\n\n\n");
         for (int i = 0;i<no_of_employees;i++)
