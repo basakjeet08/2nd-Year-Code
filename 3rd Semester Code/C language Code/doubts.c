@@ -1,40 +1,76 @@
-#include <stdio.h>
-#include <stdlib.h>
-void input(int *,int);
-void main()
+#include<stdio.h>
+#include<stdlib.h>
+int count=0;
+struct node
 {
-    int n_800;
-    printf ("enter the no. of elements in an array :");
-    scanf ("%d", &n_800);
-    int *a_800;
-    a_800=(int*)malloc(n_800*sizeof(int));
-    input (a_800 ,n_800);
+int data;
+struct node *link;
 }
-void input(int *a_800 , int n_800)
+*start=NULL, *end=NULL;
+void create()
 {
-    printf ("no. of elements in an array :");
-    for(int i_800=0;i_800<n_800;i_800++)
-        scanf ("%d",(a_800)+i_800);
+    struct node *temp;
+    temp=(struct node*) malloc(sizeof(struct node));
+    printf(" enter the value of data for node %d\n",count);
+    scanf("%d",&temp->data);
+    temp->link=NULL;
+    count++;
+    if(start==NULL)
+    {   
+        start=temp;
+        end=temp;
+    }
+    else
+    {   
+        end->link=temp;
+        end=temp;
+    }  
 }
-void display(int *a_800 , int n_800)
+void display()
 {
-    printf ("the array is :\n");
-    for(int  i_800=0;i_800<n_800;i_800++)
-    printf ("%3d", *(a_800+i_800));
+    struct node *p;
+    p=start;
+    printf("the data is \n");
+   while (p!=NULL)
+    {
+        printf("%d\n", p->data);
+        p=p->link;
+    }
+   
 }
-void search(int *a_800 , int n_800)
+int main()
 {
-    int s_800, u_800=0;
-printf("enter the no.that you want to search :");
-scanf ("%d",&s_800);
-for( int i_800=0;i_800<n_800;i_800++)
-{
-  if(s_800== *(a_800+i_800))
-  {
-    printf("the no. found at %d",(i_800+1));
-    u_800++; 
-  }
-}
-if (u_800==0)
-printf("\n no. not found");
+    int size,o,d,y=0;
+    printf("enter the size of the linked list \n");
+    scanf("%d",&size);
+    for (int i=0;i<size;i++)
+    {
+        create();
+    }
+    display();
+   struct node *t,*v,*temp,*z;
+    t=start;
+    
+    for(int i=0;i<size-y-1;i++)
+    {
+        v=t;
+        for(int k=0;k<size-i-y-1;k++)
+        {
+            z=v->link;
+            
+            if(t->data==z->data)
+            {
+                temp=(struct node*)malloc(sizeof(struct node));
+                temp=z->link;
+                v->link=temp;       
+                y++;
+            }
+            else 
+            v=v->link;
+        }
+        t=t->link;
+    
+    }
+   display();
+    return 0;
 }
