@@ -1,10 +1,8 @@
 #include <stdio.h>
-
 int main(){
     char operand;
-    int num1 , num2 ;
+    int num1 , num2;
     float result;
-
     printf("Enter two Operands (a,b) : ");
     scanf("%d %d",&num1 , &num2);
     getchar();
@@ -27,7 +25,7 @@ int main(){
         case '%' : 
             result = num1%num2;
             break;
-        default : 
+        default :
             printf("Wrong Input !!");
     }
     printf("The Result : %f",result);
