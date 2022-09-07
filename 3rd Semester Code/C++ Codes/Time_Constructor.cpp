@@ -12,18 +12,23 @@ class Time{
             this->hour = hour;
             this->min = min;
         }
-        Time(Time *ob){
-            hour = ob->hour;
-            min = ob->min;
+        Time(Time &ob){
+            hour = ob.hour;
+            min = ob.min;
         }
         showData(){
             cout << "HH:MM:SS :-> " << hour << ":"<< min << endl;
         }
 };
 int main(){
+    int hour,min;
+    cout << "Enter the Time in Hour : ";
+    cin >> hour;
+    cout << "Enter the Time in Min : ";
+    cin >> min; 
     Time t1;
-    Time t2(22);
-    Time t3(&t2);
+    Time t2(hour,min);
+    Time t3(t2);
     t1.showData();
     t2.showData();
     t3.showData();
