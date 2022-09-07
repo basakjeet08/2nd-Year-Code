@@ -20,21 +20,23 @@ class Strings{
         void showData(){
             cout << "The String is : " << st << " of length " << len << endl;
         }
-        void concatStrings(string s){
-            st = st + s;
-            len = len + s.length();
+        void concatStrings(Strings s){
+            st = st + s.st;
+            len = len + s.len;
         }
 };
 int main(){
-    Strings ob1;
-    Strings ob2("Anirban");
-    Strings ob3(ob2);
-    ob1.concatStrings("Hello");
-    ob2.concatStrings(" Basak");
-    ob3.concatStrings("\n");
+    string temp;
+    cout << "Enter the String for 1st Class : ";
+    getline(cin , temp);
+    Strings ob1(temp);
+    cout << "Enter the String to Concatinate to First String : ";
+    getline(cin, temp);
+    Strings ob2(temp);
+    ob1.concatStrings(ob2);
 
     ob1.showData();
     ob2.showData();
-    ob3.showData();
+
     return 0;
 }
