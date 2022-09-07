@@ -1,41 +1,40 @@
 #include <iostream>
 using namespace std;
-class Strings{
-    string st;
-    int len;
+class String{
+    private :
+        string st;
+        int len;
     public : 
-        Strings(){
-            st = "";
+        String(){
+            st= "";
             len = 0;
         }
-        Strings(string st){
-            this->st = st;
+        String(string st){
+            this->st = st ;
             len = st.length();
         }
-        Strings(Strings* ob){
-            st = ob->st;
-            len = ob->len;
+        String(String &ob){
+            st = ob.st;
+            len = ob.len;
+        }
+        void concatinateString(String ob){
+            st = st + ob.st ;
+            len = len + ob.len;
         }
         void showData(){
-            cout << "The String is : " << st << " of length " << len << endl;
-        }
-        void concatStrings(Strings s){
-            st = st + s.st;
-            len = len + s.len;
+            cout << "String is : " << st << " with the length of " << len << endl;
         }
 };
 int main(){
-    string temp;
-    cout << "Enter the String for 1st Class : ";
-    getline(cin , temp);
-    Strings ob1(temp);
-    cout << "Enter the String to Concatinate to First String : ";
-    getline(cin, temp);
-    Strings ob2(temp);
-    ob1.concatStrings(ob2);
-
+    String ob1;
+    string st;
+    cout << "Enter the String : ";
+    getline(cin , st);
+    String ob2(st);
+    String ob3(ob2);
+    ob2.concatinateString(ob3);
     ob1.showData();
     ob2.showData();
-
+    ob3.showData();
     return 0;
 }
