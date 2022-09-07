@@ -31,7 +31,7 @@ int main(){
     cin >> img;
     Complex ob2(real,img);
     Complex ob3(ob2);
-
+    
     ob1.showData();
     ob2.showData();
     ob3.showData();
