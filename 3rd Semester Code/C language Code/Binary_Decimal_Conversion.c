@@ -14,7 +14,6 @@ int main(){
     }
     printf("The Binary : %ld\n",binary);
     int count = 0;
-    printf("%d",num);
     while(binary>0){
         int rem = binary%10;
         num = num + rem*(pow(2,count));
