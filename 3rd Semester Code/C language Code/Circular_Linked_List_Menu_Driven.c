@@ -10,7 +10,7 @@ struct Node* insert_First(struct Node*);
 void insert_Last(struct Node* );
 struct Node* insert_Position(struct Node* );
 struct Node* delete_First(struct Node*);
-void deleteLast(struct Node* );
+void delete_Last(struct Node* );
 struct Node* delete_Position(struct Node*);
 void showList(struct Node*);
 int main(){
@@ -26,9 +26,8 @@ void menuOfTheProgram(struct Node* head){
         printf("1. Create an Node :-\n");
         printf("2. Insert an Element :-\n");
         printf("3. Delete an Element :-\n");
-        printf("4. Linear Search of an Element :-\n");
-        printf("5. Display the Node :-\n");
-        printf("6. Exit !! \n\n");
+        printf("4. Display the Node :-\n");
+        printf("5. Exit !! \n\n");
         printf("Enter your choice : ");
         scanf("%d",&choice);
 
@@ -66,8 +65,13 @@ void menuOfTheProgram(struct Node* head){
                 else 
                     printf("Wrong Choice !! \n");
                 break ;
-            case 5 :
+            case 4 :
                 showList(head);
+                break;
+            case : 5
+                break;
+            default : 
+                printf("Wrong Choice !! Try Again !! \n\n");
         }
     }while(choice != 6);
 }
@@ -133,7 +137,6 @@ struct Node* insert_Position(struct Node* head ){
     scanf("%d",&pos);
     if(pos == 1)
         head = insert_First(head);
-        return head ;
     else{
         pos-= 2;
         struct Node* ptr = head ;
@@ -149,10 +152,8 @@ struct Node* insert_Position(struct Node* head ){
     return head ;
 }
 struct Node* delete_First(struct Node* head){
-
-    if(head == NULL){
+    if(head == NULL)
         printf("The Linked List is Empty !! \n");
-    }
     else{
         struct Node* ptr = head;
         while(ptr->next != head){
@@ -166,7 +167,44 @@ struct Node* delete_First(struct Node* head){
     return head ;
 }
 void delete_Last(struct Node* head){
-    
+    if(head == NULL)
+        printf("The List is Empty !!\n");
+    else{
+        struct Node* ptr = head ;
+        while((ptr->next)->next != head){
+            ptr = ptr->next;
+        }
+        struct Node* temp = ptr->next;
+        ptr->next = head ;
+        free(temp);
+    }
+}
+struct Node* delete_Position(struct Node* head ){
+    if(head == NULL)
+        printf("The List is Empty !! \n");
+    int pos ;
+    printf("Enter the Position : ");
+    scanf("%d",&pos);
+    if(pos == 1)
+        head = delete_First(head);
+    else{
+        pos -=2;
+        struct Node* ptr = head ;
+        do{
+            ptr = ptr->next;
+            printf("%d",ptr->data);
+        }while((ptr->next)->next != head && --pos);
+        if((ptr->next)->next == head){
+            ptr->next = head ;
+            ptr = ptr->next;
+        }
+        else{
+            struct Node* temp = ptr->next;
+            ptr->next = (ptr->next)->next;
+            free(temp);
+        }
+    }
+    return head;
 }
 void showList(struct Node* head){
     struct Node* ptr = head ;
