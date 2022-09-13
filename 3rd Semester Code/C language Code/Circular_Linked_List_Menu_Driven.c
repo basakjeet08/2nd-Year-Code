@@ -68,7 +68,7 @@ void menuOfTheProgram(struct Node* head){
             case 4 :
                 showList(head);
                 break;
-            case : 5
+            case 5 : 
                 break;
             default : 
                 printf("Wrong Choice !! Try Again !! \n\n");
