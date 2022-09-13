@@ -11,7 +11,7 @@ class Tester{
         Tester(int num){
             this->num = num;
             cout << "Parametarized Called "<<endl;
-            cout << "Number : " << num << endl;
+            cout << "Number : " << this->num << endl;
         }
         Tester(Tester *ob){
             num = ob->num;
