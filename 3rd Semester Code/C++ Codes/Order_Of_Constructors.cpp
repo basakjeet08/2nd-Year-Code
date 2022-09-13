@@ -18,6 +18,9 @@ class Tester{
             cout << "Copy Constructor Invoked" << endl;
             cout << "Number : " << num << endl;
         }
+        ~Tester(){
+            cout << "Destructor Invoked !!" << endl;
+        }
 };
 int main(){
     Tester ob1;
