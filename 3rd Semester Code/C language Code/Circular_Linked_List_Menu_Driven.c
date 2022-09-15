@@ -90,15 +90,11 @@ void insert_Last(struct Node* head ){
     struct Node* new = (struct Node*)malloc(sizeof(struct Node));
     printf("Enter Data : ");
     scanf("%d",&new->data);
-    if(head == NULL)
-        head = new ;
-    else{
-        struct Node* ptr = head ;
-        while(ptr->next!= head){
-            ptr = ptr->next;
-        }
-        ptr->next = new ;
+    struct Node* ptr = head ;
+    while(ptr->next!= head){
+        ptr = ptr->next;
     }
+    ptr->next = new ;
     new->next = head ;
 }
 struct Node* insert_Position(struct Node* head ){
