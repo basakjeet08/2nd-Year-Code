@@ -15,8 +15,7 @@ struct Node* delete_Position(struct Node** , struct Node* );
 void showList(struct Node*);
 int main(){
     struct Node* head = NULL;
-    struct Node* tail = NULL;
-    
+    struct Node* tail = NULL; 
     menuOfTheProgram(head,tail);
     return 0 ;
 }
