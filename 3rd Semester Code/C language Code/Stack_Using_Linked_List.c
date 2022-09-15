@@ -13,7 +13,7 @@ int main(){
     do{
         printf("--------------------Menu --------------------\n");
         printf("1. PUSH into Stack \n");
-        printf("2. POP into Stack \n");
+        printf("2. POP out of Stack \n");
         printf("3. Display Stack \n");
         printf("4. Exit \n");
         printf("\nEnter your Choice : ");
