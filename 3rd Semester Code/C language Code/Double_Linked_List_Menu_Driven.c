@@ -21,7 +21,7 @@ int main(){
     return 0 ;
 }
 void menuOfTheProgram(struct Node* head , struct Node* tail){
-    int choice,sub_choice;
+    int choice;
     do{
         printf("-----------------------------------------\n");
         printf("1. Create an Node :-\n");
