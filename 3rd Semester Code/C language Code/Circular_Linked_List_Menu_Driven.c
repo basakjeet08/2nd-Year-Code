@@ -160,10 +160,8 @@ struct Node* delete_Position(struct Node* head ){
         do{
             ptr = ptr->next;
         }while((ptr->next)->next != head && --pos);
-        if((ptr->next)->next == head){
+        if((ptr->next)->next == head)
             ptr->next = head ;
-            ptr = ptr->next;
-        }
         else{
             struct Node* temp = ptr->next;
             ptr->next = (ptr->next)->next;
