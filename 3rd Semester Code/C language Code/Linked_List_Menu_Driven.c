@@ -106,7 +106,7 @@ struct Node* insert_pos(struct Node* head){
         while(ptr->next != NULL && --pos){
             ptr = ptr->next;
         }
-        if(ptr == NULL){
+        if(ptr->next == NULL){
             new->next = NULL ;
             ptr->next = new ;
         }
