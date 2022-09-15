@@ -77,19 +77,13 @@ struct Node* insert_First(struct Node* head){
     struct Node* new = (struct Node* )malloc(sizeof(struct Node));
     printf("Enter the Data : ");
     scanf("%d",&new->data);
-    if(head == NULL){
-        head = new ;
-        new->next = head;
+    struct Node* ptr = head ;
+    while(ptr->next != head){
+        ptr = ptr->next ;
     }
-    else{
-        struct Node* ptr = head ;
-        while(ptr->next != head){
-            ptr = ptr->next ;
-        }
-        new->next = head;
-        ptr->next = new ;
-        head = new;
-    }
+    new->next = head;
+    ptr->next = new ;
+    head = new;
     return head ;
 }
 void insert_Last(struct Node* head ){
