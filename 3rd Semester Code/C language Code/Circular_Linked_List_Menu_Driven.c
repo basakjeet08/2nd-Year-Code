@@ -20,7 +20,7 @@ int main(){
     return 0 ;
 }
 void menuOfTheProgram(struct Node* head){
-    int choice,sub_choice;
+    int choice;
     do{
         printf("-----------------------------------------\n");
         printf("1. Create an Node :-\n");
@@ -36,34 +36,10 @@ void menuOfTheProgram(struct Node* head){
                 head = createNode(head);
                 break;
             case 2 : 
-                printf("1. To Insert at First : \n");
-                printf("2. To Insert at Last : \n");
-                printf("3. To Insert at Position : \n");
-                printf("Enter the Choice : ");
-                scanf("%d",&sub_choice);
-                if(sub_choice == 1)
-                    head = insert_First(head);
-                else if(sub_choice == 2)
-                    insert_Last(head);
-                else if(sub_choice == 3)
-                    head = insert_Position(head);
-                else 
-                    printf("Wrong Choice !! \n");
+                head = insert_Position(head);
                 break ;
             case 3 : 
-                printf("1. To Delete at First : \n");
-                printf("2. To Delete at Last : \n");
-                printf("3. To Delete at Position : \n");
-                printf("Enter the Choice : ");
-                scanf("%d",&sub_choice);
-                if(sub_choice == 1)
-                    head = delete_First(head);
-                else if(sub_choice == 2)
-                    delete_Last(head);
-                else if(sub_choice == 3)
-                    head = delete_Position(head);
-                else 
-                    printf("Wrong Choice !! \n");
+                head = delete_Position(head);
                 break ;
             case 4 :
                 showList(head);
@@ -73,7 +49,7 @@ void menuOfTheProgram(struct Node* head){
             default : 
                 printf("Wrong Choice !! Try Again !! \n\n");
         }
-    }while(choice != 6);
+    }while(choice != 5);
 }
 struct Node* createNode(struct Node* head ){
     struct Node* ptr;
@@ -132,11 +108,17 @@ void insert_Last(struct Node* head ){
     new->next = head ;
 }
 struct Node* insert_Position(struct Node* head ){
+    if(head == NULL){
+        printf("Empty Linked List !! Create A Linked List First !!\n");
+        return head ;
+    }
     int pos ;
-    printf("Enter the Position : ");
+    printf("Enter the Position (1-First && 0-Last) : ");
     scanf("%d",&pos);
     if(pos == 1)
         head = insert_First(head);
+    else if(pos == 0)
+        insert_Last(head);
     else{
         pos-= 2;
         struct Node* ptr = head ;
@@ -180,13 +162,17 @@ void delete_Last(struct Node* head){
     }
 }
 struct Node* delete_Position(struct Node* head ){
-    if(head == NULL)
+    if(head == NULL){
         printf("The List is Empty !! \n");
+        return head ;
+    }
     int pos ;
-    printf("Enter the Position : ");
+    printf("Enter the Position (1-First && 0-Last) : ");
     scanf("%d",&pos);
     if(pos == 1)
         head = delete_First(head);
+    else if(pos == 0)
+        delete_Last(head);
     else{
         pos -=2;
         struct Node* ptr = head ;
