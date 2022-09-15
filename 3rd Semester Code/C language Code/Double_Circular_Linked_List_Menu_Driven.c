@@ -110,13 +110,17 @@ struct Node* insert_Position(struct Node* head ){
         do{
             ptr = ptr->next;
         }while(ptr!= head && --pos);
-        struct Node* new = (struct Node*)malloc(sizeof(struct Node));
-        printf("Enter Data : ");
-        scanf("%d",&new->data);
-        new->next = ptr->next;
-        new->prev = ptr ;
-        (ptr->next)->prev = new ;
-        ptr->next = new;
+        if(ptr == head)
+            insert_Last(head);
+        else{
+            struct Node* new = (struct Node*)malloc(sizeof(struct Node));
+            printf("Enter Data : ");
+            scanf("%d",&new->data);
+            new->next = ptr->next;
+            new->prev = ptr ;
+            (ptr->next)->prev = new ;
+            ptr->next = new;
+        }
     }
     return head ;
 }
@@ -152,9 +156,9 @@ struct Node* delete_Position(struct Node* head ){
         struct Node* ptr = head ;
         do{
             ptr = ptr->next;
-        }while((ptr->next)->next != head && --pos);
-        if((ptr->next)->next == head)
-            ptr->next = head ;
+        }while(ptr != head && --pos);
+        if(ptr == head)
+            delete_Last(head);
         else{
             struct Node* temp = ptr->next;
             ptr->next = (ptr->next)->next;
