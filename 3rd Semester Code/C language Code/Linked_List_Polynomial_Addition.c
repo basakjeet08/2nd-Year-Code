@@ -21,7 +21,6 @@ int main(){
     showList(head3);
     return 0 ;
 }
-
 struct Node* createPolynomial(struct Node* head){
     char choice ;
     struct Node* ptr = head ;
