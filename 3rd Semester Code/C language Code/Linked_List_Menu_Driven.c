@@ -12,6 +12,7 @@ struct Node* insert_pos(struct Node*);
 struct Node* delete_first(struct Node*);
 void delete_last(struct Node*);
 struct Node* delete_pos(struct Node*);
+void displayList(struct Node*);
 int main(){
     struct Node* head = NULL ;
     menuOfTheProgram(head);
@@ -85,8 +86,10 @@ void insert_last(struct Node* head){
     ptr->next = new;
 }
 struct Node* insert_pos(struct Node* head){
-    if(head == NULL)
+    if(head == NULL){
         printf("Empty Linked List !! \n");
+        return  head ;
+    }
     int pos;
     printf("Enter the Position (1- Start && 0- Last) : ");
     scanf("%d",&pos);
@@ -110,6 +113,7 @@ struct Node* insert_pos(struct Node* head){
         else{
             new->next = ptr->next;
             ptr->next = new; 
+        }
     }
     return head ;
 }
