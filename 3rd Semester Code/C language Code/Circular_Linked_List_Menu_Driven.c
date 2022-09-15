@@ -134,32 +134,23 @@ struct Node* insert_Position(struct Node* head ){
     return head ;
 }
 struct Node* delete_First(struct Node* head){
-    if(head == NULL)
-        printf("The Linked List is Empty !! \n");
-    else{
-        struct Node* ptr = head;
-        while(ptr->next != head){
-            ptr = ptr->next ;
-        }
-        ptr->next = head->next ;
-        ptr = head ;
-        head = head->next;
-        free(ptr);
+    struct Node* ptr = head;
+    while(ptr->next != head){
+        ptr = ptr->next ;
     }
+    ptr->next = head->next ;
+    ptr = head ;
+    head = head->next;
+    free(ptr);
     return head ;
 }
 void delete_Last(struct Node* head){
-    if(head == NULL)
-        printf("The List is Empty !!\n");
-    else{
-        struct Node* ptr = head ;
-        while((ptr->next)->next != head){
-            ptr = ptr->next;
-        }
-        struct Node* temp = ptr->next;
-        ptr->next = head ;
-        free(temp);
+    struct Node* ptr = head ;
+    while((ptr->next)->next != head){
+        ptr = ptr->next;
     }
+    struct Node* temp = ptr->next;
+    ptr->next = head ;
 }
 struct Node* delete_Position(struct Node* head ){
     if(head == NULL){
