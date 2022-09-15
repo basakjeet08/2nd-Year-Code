@@ -159,7 +159,6 @@ struct Node* delete_Position(struct Node* head ){
         struct Node* ptr = head ;
         do{
             ptr = ptr->next;
-            printf("%d",ptr->data);
         }while((ptr->next)->next != head && --pos);
         if((ptr->next)->next == head){
             ptr->next = head ;
