@@ -96,10 +96,10 @@ struct Node* insert_Last(struct Node* tail){
     return tail ;
 }
 struct Node* insert_Position(struct Node** head , struct Node* tail){
-    // if(*head == NULL){
-    //     printf("Empty Linked List !! Create Node First !!\n");
-    //     return NULL ;
-    // }
+    if(*head == NULL){
+        printf("Empty Linked List !! Create Node First !!\n");
+        return NULL ;
+    }
     struct Node* ptr = *head ;
     int pos ;
     printf("Enter the Position (1-First && 0-Last) : ");
@@ -117,9 +117,9 @@ struct Node* insert_Position(struct Node** head , struct Node* tail){
         while(ptr != NULL && --pos){
             ptr = ptr->next;
         }
-        // if(ptr == NULL)
-        //     tail = insert_Last(tail);
-        // else{
+        if(ptr == NULL)
+            tail = insert_Last(tail);
+        else{
             struct Node* new = (struct Node*)malloc(sizeof(struct Node));
             printf("Enter the Data : ");
             scanf("%d",&new->data);
@@ -127,7 +127,7 @@ struct Node* insert_Position(struct Node** head , struct Node* tail){
             new->prev = ptr;
             ptr->next = new;
             (new->next)->prev = new ;
-        // } 
+        } 
     }
     return tail ;
 }
@@ -146,10 +146,10 @@ struct Node* delete_Last(struct Node* tail){
     return tail ;
 }
 struct Node* delete_Position(struct Node** head , struct Node* tail){
-    // if(*head == NULL){
-    //     printf("Empty Linked List !! Create Node First !!\n");
-    //     return NULL ;
-    // }
+    if(*head == NULL){
+        printf("Empty Linked List !! Create Node First !!\n");
+        return NULL ;
+    }
     int pos ;
     struct Node* ptr = *head ;
     printf("Enter the Position (1-First && 0-Last) : ");
@@ -167,14 +167,14 @@ struct Node* delete_Position(struct Node** head , struct Node* tail){
         while(ptr != NULL && --pos){
             ptr = ptr->next ;
         }
-        // if(ptr == NULL)
-        //     tail = delete_Last(tail);
-        // else{
+        if(ptr == NULL)
+            tail = delete_Last(tail);
+        else{
             struct Node* temp = ptr->next ;
             ptr->next = temp->next;
             (temp->next)->prev = ptr ;
             free(temp);
-        // }
+        }
     }
     return tail ;
 }
