@@ -60,10 +60,8 @@ struct Node* createNode(struct Node** head){
     printf("Enter the Data : ");
     scanf("%d",&new->data);
     new->next = NULL;
-    if(ptr == NULL){
-        ptr = new ;
-        *head = new ;
-    }
+    if(ptr == NULL)
+        *head =ptr = new ;
     else{
         ptr->next = new ;
         new->prev = ptr ;
