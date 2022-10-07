@@ -1,36 +1,21 @@
 #include <iostream>
+#include <string>
 using namespace std ;
-
-class Numbers{
-    private : 
-        int num ;
-    public : 
-        Numbers(){ // Default Const
-            cout << " Constructor Invoked !! " << endl ;
-        }
-        Numbers(int a ){ // parameterized Const 
-            num = a ;
-            cout << "Num : " << num << endl ;
-            cout << "COnstructor Invoked !! \n";
-        }
-        Numbers(int a,int b,int c ){ // parameterized Const 
-            num = c ;
-            cout << "Num : " << num << endl ;
-            cout << "COnstructor Invoked !! \n";
-        }
-        Numbers(Numbers &ob){ // copy constructor
-            num = ob.num;
-            cout << "Num : " << num << endl ;
-            cout << "Consasda sdasd nstructor Invoked !! \n";
-        }
-        ~Numbers(){
-            cout<<"Destro Called !!\n";
-        }
-};
+string reversest(string , int);
 int main(){
-    //Numbers n1,n2,n3,n4,n5,n6,n7,n8;
-    Numbers n9(2,3,10);
-    Numbers n10(25);
-    Numbers n11(n10) ;
-    return 0 ;
+    string st ;
+    cout << "Enter the String : " ;
+    getline(cin , st);
+    st+="\0";
+    st = reversest(st,0);
+    cout << st << endl;
+    return 0;
+}
+string reversest(string st1 , int key){
+    string st2 ;
+    if(st1[key+1] != '\0'){
+        st2 = reversest(st1[key+1]) + st1[key] ;
+    }
+    else
+        return st1[key];
 }
