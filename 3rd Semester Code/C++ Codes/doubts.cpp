@@ -1,21 +1,20 @@
 #include <iostream>
 #include <string>
 using namespace std ;
-string reversest(string , int);
+string reverseSt(string , int);
 int main(){
     string st ;
     cout << "Enter the String : " ;
     getline(cin , st);
-    st+="\0";
-    st = reversest(st,0);
+    st = reverseSt(st,0);
     cout << st << endl;
     return 0;
 }
-string reversest(string st1 , int key){
+string reverseSt(string st1 , int key){
     string st2 ;
-    if(st1[key+1] != '\0'){
-        st2 = reversest(st1[key+1]) + st1[key] ;
-    }
-    else
-        return st1[key];
+    if(key+1 != st1.length())
+        st2 = st2 + reverseSt(st1 , (key+1));
+        
+    st2 = st1[key];
+    return st2;
 }
