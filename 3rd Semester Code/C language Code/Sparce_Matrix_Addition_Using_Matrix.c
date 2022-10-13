@@ -12,13 +12,13 @@ int main(){
     printf("Enter the Value of first Matrix : \n");
     for(int i=0;i<size;i++)
         for(int j=0;j<size;j++){
-            printf("Element [%d][%d] : " , i+1 , j+1);
+            printf("Element [%d][%d] : " , i , j);
             scanf("%d",&matrix1[i][j]);
         }
     printf("Enter the Value of Second Matrix : \n");
     for(int i=0;i<size;i++)
         for(int j=0;j<size;j++){
-            printf("Element [%d][%d] : " , i+1 , j+1);
+            printf("Element [%d][%d] : " , i, j);
             scanf("%d",&matrix2[i][j]);
         }
     formTriplet(matrix1[0] ,matrix2[0] , size);
@@ -61,8 +61,11 @@ int nonZeroElements(int *matrix , int nos){
     }
     return count;
 }
-void adder(){
-    
+void adder(int* ptr , int* mat , int val){
+    *ptr = *mat ;
+    *(ptr+1) = *(mat+1);
+    *(ptr+2) = val;
+
 }
 void addSparceMatrix(int* triplet1 , int* triplet2 , int t1_size , int t2_size){
     int triplet3[t1_size+t2_size][3];
@@ -71,44 +74,39 @@ void addSparceMatrix(int* triplet1 , int* triplet2 , int t1_size , int t2_size){
     while(t1_size != 0 && t2_size != 0){
         flag++;
         if(*triplet1 < *triplet2){
-            triplet3[flag][0] = *triplet1 ;
-            triplet3[flag][1] = *(triplet1+1);
-            triplet3[flag][2] = *(triplet1+2);
+            adder(ptr , triplet1 , *(triplet1+2));
             t1_size--;
             triplet1+=3;
+            
         }
         else if(*triplet1 > *triplet2){
-            triplet3[flag][0] = *triplet2 ;
-            triplet3[flag][1] = *(triplet2+1);
-            triplet3[flag][2] = *(triplet2+2);
+            adder(ptr , triplet2 , *(triplet2+2));
             t2_size--;
             triplet2+= 3;
         }
         else{
             if(*(triplet1+1) > *(triplet2+1)){
-                triplet3[flag][0] = *triplet2 ;
-                triplet3[flag][1] = *(triplet2+1);
-                triplet3[flag][2] = *(triplet2+2);
+                adder(ptr , triplet2 , *(triplet2+2));
                 t2_size--;
                 triplet2+= 3;
+                
             }
             else if(*(triplet1+1) < *(triplet2+1)){
-                triplet3[flag][0] = *triplet1 ;
-                triplet3[flag][1] = *(triplet1+1);
-                triplet3[flag][2] = *(triplet1+2);
+                adder(ptr , triplet1 , *(triplet1+2));
                 t1_size--;
                 triplet1+=3;
+                
             }
             else{
-                triplet3[flag][0] = *triplet1 ;
-                triplet3[flag][1] = *(triplet1+1);
-                triplet3[flag][2] = *(triplet1+2) + *(triplet2+2);
+                int add= *(triplet1+2) + *(triplet2+2);
+                adder(ptr , triplet1 , add);
                 t1_size--;
                 t2_size--;
                 triplet1+=3;
                 triplet2+=3;
             }
         }
+        ptr+= 3;
     }
     int* leftover = triplet2;
     int size = t2_size;
@@ -117,11 +115,8 @@ void addSparceMatrix(int* triplet1 , int* triplet2 , int t1_size , int t2_size){
         size = t1_size ;
     }
     for(int i=0;i<size;i++){
-        flag++;
-        triplet3[flag][0] = *leftover ;
-        triplet3[flag][1] = *(leftover+1);
-        triplet3[flag][2] = *(leftover+2);
-        leftover+=3;
+        flag++;   
+        adder(ptr , leftover , *(leftover+2));
     }
     showData(triplet3[0] , flag);
 }
