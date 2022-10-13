@@ -61,11 +61,11 @@ int nonZeroElements(int *matrix , int nos){
     }
     return count;
 }
-void adder(int* ptr , int* mat , int val){
+int* adder(int* ptr , int* mat , int val){
     *ptr = *mat ;
     *(ptr+1) = *(mat+1);
     *(ptr+2) = val;
-
+    return (mat+3);
 }
 void addSparceMatrix(int* triplet1 , int* triplet2 , int t1_size , int t2_size){
     int triplet3[t1_size+t2_size][3];
@@ -74,53 +74,40 @@ void addSparceMatrix(int* triplet1 , int* triplet2 , int t1_size , int t2_size){
     while(t1_size != 0 && t2_size != 0){
         flag++;
         if(*triplet1 < *triplet2){
-            adder(ptr , triplet1 , *(triplet1+2));
-            t1_size--;
-            triplet1+=3;
-            
+            triplet1 = adder(ptr , triplet1 , *(triplet1+2));
+            t1_size--;            
         }
         else if(*triplet1 > *triplet2){
-            adder(ptr , triplet2 , *(triplet2+2));
+            triplet2 = adder(ptr , triplet2 , *(triplet2+2));
             t2_size--;
-            triplet2+= 3;
         }
         else{
             if(*(triplet1+1) > *(triplet2+1)){
-                adder(ptr , triplet2 , *(triplet2+2));
-                t2_size--;
-                triplet2+= 3;
-                
+                triplet2 = adder(ptr , triplet2 , *(triplet2+2));
+                t2_size--;                
             }
             else if(*(triplet1+1) < *(triplet2+1)){
-                adder(ptr , triplet1 , *(triplet1+2));
-                t1_size--;
-                triplet1+=3;
-                
+                triplet1 = adder(ptr , triplet1 , *(triplet1+2));
+                t1_size--;                
             }
             else{
-                adder(ptr , triplet1 , (*(triplet1+2) + *(triplet2+2)));
+                triplet1 = adder(ptr , triplet1 , (*(triplet1+2) + *(triplet2+2)));
                 t1_size--;
                 t2_size--;
-                triplet1+=3;
                 triplet2+=3;
             }
         }
         ptr+= 3;
     }
-    int* leftover = triplet2;
-    int size = t2_size;
-    if(t1_size != 0){
-        leftover = triplet1;
-        size = t1_size ;
-    }
-    for(int i=0;i<size;i++){
-        flag++;   
-        adder(ptr , leftover , *(leftover+2));
+    int size = (t1_size != 0)? t1_size : t2_size;
+    int *leftover = (t1_size != 0)? triplet1 : triplet2;
+    flag= flag + size;
+    for(int i=0;i<size;i++){ 
+        leftover = adder(ptr , leftover , *(leftover+2));
         ptr+=3;
     }
     showData(triplet3[0] , flag);
 }
-
 void showData(int* matrix , int size){
     for(int i=0;i<=size;i++){
         for(int j=0;j<3;j++){
