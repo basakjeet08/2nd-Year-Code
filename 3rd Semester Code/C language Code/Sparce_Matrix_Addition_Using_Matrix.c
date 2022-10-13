@@ -98,8 +98,7 @@ void addSparceMatrix(int* triplet1 , int* triplet2 , int t1_size , int t2_size){
                 
             }
             else{
-                int add= *(triplet1+2) + *(triplet2+2);
-                adder(ptr , triplet1 , add);
+                adder(ptr , triplet1 , (*(triplet1+2) + *(triplet2+2)));
                 t1_size--;
                 t2_size--;
                 triplet1+=3;
@@ -117,6 +116,7 @@ void addSparceMatrix(int* triplet1 , int* triplet2 , int t1_size , int t2_size){
     for(int i=0;i<size;i++){
         flag++;   
         adder(ptr , leftover , *(leftover+2));
+        ptr+=3;
     }
     showData(triplet3[0] , flag);
 }
