@@ -11,10 +11,10 @@ functions in the appropriate class for
 
 #include <iostream>
 using namespace std;
-
 class Account{
-    int accNumber,balance;
-    string name ;
+    protected : 
+        int accNumber,balance;
+        string name ;
     public : 
         void getData(){
             cout << "Enter the Name : " ;
@@ -23,54 +23,77 @@ class Account{
             cin >> accNumber ;
             cout << "Enter the Balance : " ;
             cin >> balance ;
+            getchar();
         }
         void showData(){
             cout << "Name : " << name << endl ;
             cout << "Account Number : " << accNumber << endl;
             cout << "Balance : " << balance << endl ;
         }
-};
-class Savings : protected Account {
-    int minBalance ;
-    public : 
-        void withdraw(){
-            cout << "Enter the Amount you want to Withdraw : ";
-            int withdraw ;
-            cin >> withdraw ;
-
-            if(withdraw > minBalance)
-                cout << "Insuffisient Balance !" << endl ;
-            else{
-                balance -= withdraw;
-                cout << "WithDraw Successful \n";
+        void withdraw(int withdraw){
+            if(withdraw > balance){
+                cout << "Insufficient Balance!! Your Balance is : " << balance << endl ;
+                return ;
             }
-        }
-        void deposit(){
-            cout << "Enter the Amount to be Deposited : ";
-            int dep;
-            cin >> dep ;
-            balance += dep ;
-        }
-}   
-class Current : protected Accout {
-    int overdueBalance ;
-    void withdraw(){
-            cout << "Enter the Amount you want to Withdraw : ";
-            int withdraw ;
-            cin >> withdraw ;
             balance -= withdraw;
             cout << "WithDraw Successful \n";
-            
+        }
+        void deposit(int deposit){
+            cin >> deposit ;
+            balance += deposit ;
+        }
+};
+class Savings : public Account {
+    int minBalance ;
+    public : 
+        Savings(int minBalance){this->minBalance = minBalance;}
+        void withdrawSavings(){
+            cout << "Enter the Amount you want to Withdraw : ";
+            int draw ;
+            cin >> draw ;
+            if(draw > minBalance)
+                cout << "Insuffisient Balance !" << endl ;
+            else
+                withdraw(draw);
+        }
+        void depositSavings(){
+            cout << "Enter the Amount to be Deposited : ";
+            int dep;
+            deposit(dep);
+        }
+};   
+class Current : public Account{
+    int overdueBalance ;
+    public :
+    Current(int overdueBalance){this->overdueBalance = overdueBalance;}
+    void withdrawCurrent(){
+            cout << "Enter the Amount you want to Withdraw : ";
+            int draw ;
+            cin >> draw ;
+            withdraw(draw);            
     }
-    void deposit(){
+    void depositCurrent(){
         cout << "Enter the Amount to be Deposited : ";
         int dep;
         cin >> dep ;
-        if(deposit > overdueBalance)
+        if(dep > overdueBalance)
             cout << "Insuffisient Balance !" << endl ;
-        else{
-            balance += dep ;
-
-        }
+        else
+            deposit(dep);
     }
 };
+int main(){
+    Current ob1(500);
+    Savings ob2(500);
+
+    ob1.getData();
+    ob2.getData();
+    ob1.depositCurrent();
+    ob1.withdrawCurrent();
+    ob2.withdrawSavings();
+    ob2.depositSavings();
+
+    ob1.showData();
+    ob2.showData();
+    return 0 ;
+}
