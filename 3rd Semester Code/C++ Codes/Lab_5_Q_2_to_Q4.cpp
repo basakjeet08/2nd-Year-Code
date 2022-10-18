@@ -20,7 +20,7 @@ using namespace std ;
 class Student { 
     public :
         string name ;
-        int roll , age , total;
+        int roll , age , total = 0;
         double percentage ;
         Student(string name , int roll , int age){
             this->name = name ;
@@ -31,24 +31,14 @@ class Student {
 class sports{
     protected :
         int sports_marks ;
-
-    protected : 
-     void getMarksSports(){
-        cout << "Enter the Marks in Sports : " ;
-        cin >> sports_marks ;
-    }
+        void getMarksSports(){
+            cout << "Enter the Marks in Sports : " ;
+            cin >> sports_marks ;
+        }
 };
 class test : protected Student{
     protected : 
         int marks[5];
-    public : 
-        test(string name , int roll , int age) : Student(name , roll , age){
-            cout << "Enter the Marks in 5 Subjects : ";
-            for(int i = 0;i<5;i++)
-                cin >> marks[i];
-            getchar();
-        }
-    protected : 
         void showData(){
             cout << "Name : " << name << endl;
             cout << "Roll No : " << roll <<endl;
@@ -60,6 +50,13 @@ class test : protected Student{
             cout << "Total : " << total << endl ;
             cout << "Percentage : " << percentage << endl ;
         }
+    public : 
+        test(string name , int roll , int age) : Student(name , roll , age){
+            cout << "Enter the Marks in 5 Subjects : ";
+            for(int i = 0;i<5;i++)
+                cin >> marks[i];
+            getchar();
+        }        
 };
 class result : protected test , sports{
     public : 
@@ -77,15 +74,7 @@ class result : protected test , sports{
         }
 };
 int main(){
-    string name ;
-    int roll , age ;
-    cout << "Enter the Name : ";
-    getline(cin , name);
-    cout << "Enter the Roll Number : ";
-    cin >> roll ;
-    cout << "Enter the Age : " ;
-    cin >> age ;
-    result ob (name , roll , age);
+    result ob ("Anirban Basak" , 21051880 , 20);
     ob.caller();
     return 0 ;
 }

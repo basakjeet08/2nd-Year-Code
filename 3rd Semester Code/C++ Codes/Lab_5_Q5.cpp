@@ -55,7 +55,6 @@ int main(){
     triangle t1 ;
     rectangle r1 ;
     circle c1 ;
-    shape s;
     t1.getData();
     t1.showData();
     r1.getData();
