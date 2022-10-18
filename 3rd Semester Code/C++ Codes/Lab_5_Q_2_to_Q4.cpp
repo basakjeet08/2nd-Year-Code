@@ -11,21 +11,29 @@ Q4. Extend the program ii. to include a class sports, which stores the marks in 
 Derive the result class from the classes ‘test’ and ‘sports’. Calculate the total marks and
 percentage of a student.
 
+Q11. Extend the program ii. of inheritance to include a class sports, which stores the marks in
+sports activity. Derive the result class from the classes ‘test’ and ‘sports’. Create objects
+using parameterized constructors .Calculate the total marks and percentage of a student
 */
 #include <iostream>
 using namespace std ;
 class Student { 
-    public : 
+    public :
         string name ;
         int roll , age , total;
         double percentage ;
+        Student(string name , int roll , int age){
+            this->name = name ;
+            this->roll = roll ;
+            this->age = age ;
+        }
 };
 class sports{
     protected :
         int sports_marks ;
 
     protected : 
-     void getDataSports(){
+     void getMarksSports(){
         cout << "Enter the Marks in Sports : " ;
         cin >> sports_marks ;
     }
@@ -33,20 +41,14 @@ class sports{
 class test : protected Student{
     protected : 
         int marks[5];
-
-    protected : 
-        void getDataStudent(){
-            cout << "Enter the Name : ";
-            getline(cin , name);
-            cout << "Enter the Roll Number : ";
-            cin >> roll ;
-            cout << "Enter the Age : " ;
-            cin >> age ;
+    public : 
+        test(string name , int roll , int age) : Student(name , roll , age){
             cout << "Enter the Marks in 5 Subjects : ";
             for(int i = 0;i<5;i++)
                 cin >> marks[i];
             getchar();
         }
+    protected : 
         void showData(){
             cout << "Name : " << name << endl;
             cout << "Roll No : " << roll <<endl;
@@ -59,8 +61,9 @@ class test : protected Student{
             cout << "Percentage : " << percentage << endl ;
         }
 };
-class result : private test , sports{
+class result : protected test , sports{
     public : 
+        result(string name , int roll , int age) : test (name , roll , age){}
         void calculate(){
             for(int i=0;i<5;i++)
                 total += marks[i];
@@ -68,14 +71,21 @@ class result : private test , sports{
             percentage = total/6.0 ;
         }
         void caller(){
-            getDataStudent();
-            getDataSports();
+            getMarksSports();
             calculate();
             showData();
         }
 };
 int main(){
-    result ob ;
+    string name ;
+    int roll , age ;
+    cout << "Enter the Name : ";
+    getline(cin , name);
+    cout << "Enter the Roll Number : ";
+    cin >> roll ;
+    cout << "Enter the Age : " ;
+    cin >> age ;
+    result ob (name , roll , age);
     ob.caller();
     return 0 ;
 }
