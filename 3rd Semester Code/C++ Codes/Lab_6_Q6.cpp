@@ -27,6 +27,8 @@ int main(){
     Distance d1, d2 ,d3 ;
     d1.getData();
     d2.getData();
+    if(d1 == d2)
+        cout << "Equal " << endl ;
     d3 = d1 > d2 ;
     d3.showData();
     return 0 ;
