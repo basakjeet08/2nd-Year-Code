@@ -1,5 +1,5 @@
 /**
- * WAP to demonstrate the order of call of constructors and destructors in case of multi�
+ * WAP to demonstrate the order of call of constructors and destructors in case of multi
  * level inheritance.
  */
 #include <iostream>

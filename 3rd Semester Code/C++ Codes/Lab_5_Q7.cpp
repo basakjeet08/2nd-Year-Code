@@ -23,7 +23,6 @@ class Account{
             cin >> accNumber ;
             cout << "Enter the Balance : " ;
             cin >> balance ;
-            getchar();
         }
         void showData(){
             cout << "Name : " << name << endl ;
@@ -38,10 +37,7 @@ class Account{
             balance -= withdraw;
             cout << "WithDraw Successful \n";
         }
-        void deposit(int deposit){
-            cin >> deposit ;
-            balance += deposit ;
-        }
+        void deposit(int deposit){balance += deposit ;}
 };
 class Savings : public Account {
     int minBalance ;
@@ -51,14 +47,16 @@ class Savings : public Account {
             cout << "Enter the Amount you want to Withdraw : ";
             int draw ;
             cin >> draw ;
-            if(draw > minBalance)
+            getchar();
+            if(draw < minBalance)
                 cout << "Insuffisient Balance !" << endl ;
             else
                 withdraw(draw);
         }
         void depositSavings(){
-            cout << "Enter the Amount to be Deposited : ";
             int dep;
+            cout << "Enter the Amount to be Deposited : ";
+            cin >> dep;
             deposit(dep);
         }
 };   
@@ -87,13 +85,13 @@ int main(){
     Savings ob2(500);
 
     ob1.getData();
-    ob2.getData();
     ob1.depositCurrent();
     ob1.withdrawCurrent();
-    ob2.withdrawSavings();
-    ob2.depositSavings();
-
     ob1.showData();
+
+    ob2.getData();
+    ob2.depositSavings();
+    ob2.withdrawSavings();
     ob2.showData();
     return 0 ;
 }
