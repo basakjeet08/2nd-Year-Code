@@ -8,9 +8,7 @@ class Time{
             cin >> min >> sec ;
         }
         bool operator ==(Time ob){
-            if((min == ob.min) && (sec == ob.sec))
-                return true ;
-            return false ;
+                return ((min == ob.min) && (sec == ob.sec)) ;
         }
 };
 int main(){
