@@ -1,13 +1,5 @@
- leftover = triplet2;
-    // int size = t2_size;
-    // if(t1_size != 0){
-    //     leftover = triplet1;
-    //     size = t1_size ;
-    // }
-    // for(int i=0;i<size;i++){
-    //     flag++;
-    //     triplet3[flag][0] = *leftover ;
-    //     triplet3[flag][1] = *(leftover+1);
-    //     triplet3[flag][2] = *(leftover+2);
-    //     leftover+=3;
-    // }
+= ptr1 ;
+                temp->data = ptr1->data + ptr2->data;
+                adder(&head3 , &ptr3 , &temp);
+                ptr1 = ptr1->next;
+                ptr2 = ptr2->next;
