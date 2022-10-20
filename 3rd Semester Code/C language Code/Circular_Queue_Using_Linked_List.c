@@ -39,18 +39,20 @@ void menuOfTheProgram(struct Node* front){
         }
     }
 }
-struct Node* enqueue(struct Node* ptr){
+struct Node* enqueue(struct Node* front){
     struct Node* new = (struct Node*)malloc(sizeof(struct Node));
+    struct Node* ptr = front ;
     printf("Enter the Element : ");
     scanf("%d",&new->data);
     new->next = NULL ;
     if(ptr == NULL)
         return new;
+
     while(ptr->next != NULL){
         ptr = ptr->next;
     }
     ptr->next = new ;
-    return ptr;
+    return front;
 }
 struct Node* dequeue(struct Node* ptr){
     if(ptr == NULL){
@@ -62,10 +64,14 @@ struct Node* dequeue(struct Node* ptr){
     free(temp);
     return ptr ;
 }
-void traversal(struct Node* front){
-    while(front != NULL){
-        printf("%d ",front->data);
-        front = front->next;
+void traversal(struct Node* ptr){
+    if(ptr == NULL){
+        printf("Empty List \n");
+        return ;
+    }
+    while(ptr != NULL){
+        printf("%d ",ptr->data);
+        ptr = ptr->next;
     }
     printf("\n");
 }
