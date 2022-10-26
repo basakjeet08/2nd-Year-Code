@@ -1,5 +1,10 @@
+/*
+    3-WAP to convert Class type to Class type.
+        ii- By using casting operator
+*/
+
 #include <iostream>
-using namespace std ;
+using namespace std;
 class Number1{
     int a , b ;
     public : 
