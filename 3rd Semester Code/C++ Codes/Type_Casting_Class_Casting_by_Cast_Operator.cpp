@@ -2,15 +2,11 @@
     3-WAP to convert Class type to Class type.
         ii- By using casting operator
 */
-
 #include <iostream>
 using namespace std;
 class Number1{
     int a , b ;
     public : 
-        Number1(){
-            a = b = 0;
-        }
         Number1(int x , int y){
             a = x ;
             b = y ;
@@ -26,12 +22,6 @@ class Number2{
         void getData(){
             cout << "Enter Data : " ;
             cin >> x >> y ;
-        }
-        int getter_x(){
-            return x ;
-        }
-        int getter_y(){
-            return y ;
         }
         operator Number1(){
             Number1 num(x , y);
