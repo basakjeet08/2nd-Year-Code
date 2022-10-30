@@ -51,19 +51,6 @@ void enqueue(int* queue){
     scanf("%d",&value);
     *(queue+rear) = value;
 }
-void traversal(int* queue){
-    if(front == -1){
-        printf("Empty Queue\n");
-        return;
-    }
-    int i = front;
-    while(i != rear){
-        printf("%d " , *(queue+i));
-        i = (i+1)%size;
-    }
-    printf("%d",*(queue+i));
-    printf("\n");
-}
 void dequeue(int* queue){
     if(front == -1){
         printf("UnderFlow\n");
@@ -77,4 +64,17 @@ void dequeue(int* queue){
         printf("%d \n",*(queue+front));
         front++;
     }
+}
+void traversal(int* queue){
+    if(front == -1){
+        printf("Empty Queue\n");
+        return;
+    }
+    int i = front;
+    while(i != rear){
+        printf("%d " , *(queue+i));
+        i = (i+1)%size;
+    }
+    printf("%d",*(queue+i));
+    printf("\n");
 }
