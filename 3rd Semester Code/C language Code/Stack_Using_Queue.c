@@ -43,11 +43,11 @@ void menuOfTheProgram(struct Node* front){
 struct Node* enqueue(struct Node* front){
     char choice ;
     do{
-        struct Node* new = (struct Node*)malloc(sizeof(struct Node));
+        struct Node* queue = (struct Node*)malloc(sizeof(struct Node));
         printf("Enter the Data : ");
-        scanf("%d", &new->data);
+        scanf("%d", &queue->data);
         new->next = front ;
-        front = new ;
+        front = queue ;
         printf("Do you Want to Continue (y/n) : ");
         scanf(" %c",&choice);
     }while(choice == 'y');
