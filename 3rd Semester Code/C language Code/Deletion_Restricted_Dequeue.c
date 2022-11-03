@@ -41,6 +41,7 @@ void menuOfTheProgram(struct Node* head){
                 break;
             case 4 :
                 head = delete_first(head);
+                break;
             case 5 :
                 displayList(head);
                 break;
