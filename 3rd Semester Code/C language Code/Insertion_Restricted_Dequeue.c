@@ -7,7 +7,6 @@ struct Node {
 };
 void menuOfTheProgram(struct Node*);
 struct Node* createNode(struct Node*);
-struct Node* insert_first(struct Node* );
 void insert_last(struct Node* );
 struct Node* delete_first(struct Node*);
 void delete_last(struct Node*);
