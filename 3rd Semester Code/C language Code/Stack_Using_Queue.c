@@ -53,6 +53,13 @@ struct Node* enqueue(struct Node* front){
     }while(choice == 'y');
     return front ;
 }
+struct Node* dequeue(struct Node* front){
+    struct Node* temp = front ;
+    front = front ->next ;
+    printf("%d \n" , temp->data);
+    free(temp);
+    return front ;
+}
 void showQueue(struct Node* front){
     struct Node* ptr = front ;
     while(ptr != NULL){
@@ -60,11 +67,4 @@ void showQueue(struct Node* front){
         ptr = ptr->next;
     }
     printf("\n");
-}
-struct Node* dequeue(struct Node* front){
-    struct Node* temp = front ;
-    front = front ->next ;
-    printf("%d \n" , temp->data);
-    free(temp);
-    return front ;
 }
