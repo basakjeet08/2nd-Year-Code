@@ -1,3 +1,7 @@
+/**
+ * i. Create a class shape. Derive three classes from it; Circle, Square and Triangle. Find area
+ * of each shape and display it, using virtual function.
+*/
 #include <iostream>
 using namespace std;
 class Shape{
