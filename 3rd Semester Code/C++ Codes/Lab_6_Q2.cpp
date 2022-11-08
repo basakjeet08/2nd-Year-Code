@@ -7,18 +7,18 @@ using namespace std;
 class A{
     public:
         int arr[5];
-        friend ostream &operator<<(ostream &out, A &obj);
-        friend istream &operator>>(istream &in, A &obj);
+        friend ostream &operator<<(ostream &out, A &ob);
+        friend istream &operator>>(istream &in, A &ob);
 }; 
-istream &operator>>(istream &in, A &obj){
+istream &operator>>(istream &in, A &ob){
     for (int i=0; i<5; i++)
-        in >> obj.arr[i];
+        in >> ob.arr[i];
     return in;
 }
-ostream &operator<<(ostream &out, A &obj){
+ostream &operator<<(ostream &out, A &ob){
     for (int i=0; i<5; i++)
-        out << obj.arr[i] << " ";
-    cout << endl;
+        out << ob.arr[i] << " ";
+    out << endl;
     return out;
 }
 int main(){
