@@ -1,3 +1,8 @@
+/**
+ * WAP to add two objects of time class. Overload the operator ‘==’ to compare two objects
+ * and display whether they are equal or not. Overload the assignment operator.
+ */
+
 #include <iostream>
 using namespace std ;
 class Time{
