@@ -19,6 +19,8 @@ void sort(T* arr){
 }
 template <class T>
 void showData(T* arr){
+    getData<T>(arr);
+    sort<T>(arr);
     cout << "The Array : " ;
     for(int i=0;i<5;i++)
         cout << arr[i] << " " ;
@@ -26,6 +28,6 @@ void showData(T* arr){
 int main(){
     int* arr = new int[5] ; 
     getData<int>(arr);
-    sort(arr);
-    showData<int>(arr);
+    double* arr2 = new double[5];
+    getData<double>(arr2);
 }
