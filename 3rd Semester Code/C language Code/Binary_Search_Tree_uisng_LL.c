@@ -4,7 +4,7 @@ struct Tree {
     int data ;
     struct Tree *lc , *rc ;
 };
-struct Tree* buildTree(struct Tree*);
+void buildTree(struct Tree*);
 void showTree(struct Tree*);
 int main(){
     int choice ;
@@ -20,9 +20,7 @@ int main(){
     showTree(root);
 }
 struct Tree* buildTree(struct Tree* root){
-    int choice ;
     struct Tree* ptr = root ;
-    struct Tree* prev = NULL ;
     struct Tree* new = (struct Tree*)malloc(sizeof(struct Tree));
     printf("Enter the Data : ");
     scanf("%d",&new->data);
@@ -45,7 +43,6 @@ struct Tree* buildTree(struct Tree* root){
             }
         }
     }
-    return root ;
 }
 void showTree(struct Tree* root){
     if(root->lc != NULL)
