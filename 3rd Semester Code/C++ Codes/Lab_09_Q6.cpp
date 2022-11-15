@@ -3,7 +3,6 @@
 using namespace std;
 int main(){
     int arr[5];
-
     try{
         for(int i=0 ; i<6;i++){
             if(i > 4)
