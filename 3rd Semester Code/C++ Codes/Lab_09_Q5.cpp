@@ -1,3 +1,4 @@
+// v. WAP to throw and handle ‘division by zero’ exception.
 #include <iostream>
 using namespace std;
 int main(){
