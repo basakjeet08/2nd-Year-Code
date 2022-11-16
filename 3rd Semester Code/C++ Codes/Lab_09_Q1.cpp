@@ -27,7 +27,7 @@ void showData(T* arr){
 }
 int main(){
     int* arr = new int[5] ; 
-    getData<int>(arr);
+    showData<int>(arr);
     double* arr2 = new double[5];
-    getData<double>(arr2);
+    showData<double>(arr2);
 }
