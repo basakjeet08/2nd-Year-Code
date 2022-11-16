@@ -11,11 +11,13 @@ int main(){
         getline(cin , input);
         myFileWriter << input;
     }
+    myFileWriter.close();
     ifstream myFileReader("File.txt");
     cout << "--------------------OUTPUT--------------------\n";
     while(!myFileReader.eof()){
         getline(myFileReader,output) ;
         cout << output << endl ;
     }
+    myFileReader.close();
     return 0 ;
 }
