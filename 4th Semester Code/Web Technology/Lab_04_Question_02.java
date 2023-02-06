@@ -60,5 +60,7 @@ public class Lab_04_Question_02 {
         }
 
         System.out.println(weekDay);
+
+        sc.close();
     }
 }
