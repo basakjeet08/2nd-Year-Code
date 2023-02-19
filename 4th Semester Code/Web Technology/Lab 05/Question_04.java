@@ -1,65 +1,47 @@
 import java.util.*;
 
-class Question_04 {
-    int n;
-    int arr[];
+class Question_04{
+    int num[];
+    int n = 0;
 
-    public void read() {
+    void read(){
         Scanner sc = new Scanner(System.in);
-        System.out.print("Enter the number of elements: ");
+        System.out.print("Enter the amount of Number : ");
         n = sc.nextInt();
-        arr = new int[n];
-        System.out.println("Enter the elements: ");
-        for (int i = 0; i < n; i++) {
-            arr[i] = sc.nextInt();
-        }
+        num = new int[n];
+        System.out.println("Enter the Numbers ");
+        for(int i = 0;i<n ; i++)
+            num[i] = sc.nextInt();
+        sc.close();
     }
+    void display(){
+        System.out.println("The List : ");
+        for(int i = 0;i<n;i++)
+            System.out.print(num[i] + " ");
+    }
+    void swap(){
+        int minIndex = 0 , maxIndex = 0;
+        int min , max ;
+        min = max = num[0];
 
-    public void swap() {
-        int max = 0, min = 0;
-        for (int i = 0; i < n; i++) {
-            if (arr[i] > arr[max]) {
-                max = i;
+        for(int i = 1 ; i<n ; i++){
+            if(min > num[i]){
+                minIndex = i;
+                min = num[i];
             }
-            if (arr[i] < arr[min]) {
-                min = i;
+            if(max < num[i]){
+                maxIndex = i ;
+                max = num[i];
             }
         }
-        int temp = arr[max];
-        arr[max] = arr[min];
-        arr[min] = temp;
+        num[minIndex] = max ;
+        num[maxIndex] = min ;
     }
 
-    public void display() {
-        System.out.println("The array after swapping is: ");
-        for (int i = 0; i < n; i++) {
-            System.out.print(arr[i] + " ");
-        }
-    }
-
-    public static void main(String[] args) {
-        Question_04 obj = new Question_04();
-        obj.read();
-        obj.swap();
-        obj.display();
+    public static void main(String args[]){
+        Question_04 ob = new Question_04();
+        ob.read();
+        ob.swap();
+        ob.display();
     }
 }
-
-
-
-
-
-// import java.util.*;
-
-// class Number{
-//     int n ;
-//     int num[];
-
-//     void getData(){
-//         Scanner sc = new Scanner(System.in);
-//         System.out.print("Enter the no. of Numbers : ");
-//         if(sc.hasNextInt())
-//             n = sc.nextInt();
-        
-//     }
-// }
