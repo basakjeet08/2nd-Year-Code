@@ -1,27 +1,44 @@
-public class Question_03 {
+import java.util.*;
+public class Question_03{
+    public static void main(String args[]){
+        Scanner sc = new Scanner(System.in);
+        Shapes obj = new Shapes();
 
-    void show_area(double r) {
-        double area = 3.14 * r * r;
-        System.out.println("Area of Circle :" + area);
+        System.out.println("1. Circle");
+        System.out.println("1. Rectangle");
+        System.out.println("3. Triangle \n");
+
+        System.out.print("Enter Your Choice : ");
+        int choice = sc.nextInt();
+        double area = 0;
+        switch(choice){
+            case 1 : 
+                System.out.print("Enter the Radius : ");
+                area = obj.calculateArea(sc.nextDouble());
+                break;
+            case 2 : 
+                System.out.print("Enter the Length and Breadth : ");
+                area = obj.calculateArea(sc.nextInt(), sc.nextInt());
+                break ;
+            case 3 : 
+                System.out.print("Enter the Base and Height : ");
+                area = obj.calculateArea(sc.nextDouble(), sc.nextDouble());
+                break;
+        }
+        sc.close();
+        System.out.println("Area : " + area );
+    }
+}
+class Shapes{
+    double calculateArea(double r){
+        return 3.14 * r * r;
     }
 
-    void show_area(int l, int b) {
-
-        double area = l * b;
-        System.out.println("Area of Rectangle :" + area);
-
+    int calculateArea(int length , int breadth){
+        return length * breadth ;
     }
 
-    void show_area(double b, double h) {
-        double area = 0.5 * b * h;
-        System.out.println("Area of Triangle :" + area);
-
-    }
-
-    public static void main(String[] args) {
-        Question_03 ob = new Question_03();
-        ob.show_area(7, 8);
-        ob.show_area(8.9);
-        ob.show_area(7.8, 9.8);
+    double calculateArea(double base , double height){
+        return 0.5 * base * height ;
     }
 }
