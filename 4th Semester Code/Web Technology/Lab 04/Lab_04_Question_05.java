@@ -1,4 +1,3 @@
-import java.io.*;
 public class Lab_04_Question_05 {
     public static void main(String args[]){
         int num1 = 0 ;

@@ -8,6 +8,7 @@ class Lab_04_Question_01{
         System.out.print("Enter Your Marks : ");
         if(sc.hasNextInt())
             marks = sc.nextInt();
+        sc.close();
 
         char grade ;
         if(marks >= 90)

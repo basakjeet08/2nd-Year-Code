@@ -12,6 +12,7 @@ public class Lab_04_Question_04 {
         System.out.print("Enter Your Last Name : ");
         lastName = sc.nextLine();
 
+        sc.close();
         System.out.println("Your Name : " + firstName + " " + lastName);
     }
 }

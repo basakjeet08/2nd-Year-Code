@@ -7,6 +7,7 @@ public class Lab_04_Question_03 {
         System.out.print("Enter the Number : ");
         if(sc.hasNextInt())
             number = sc.nextInt();
+        sc.close();
         
         int temp = number ;
         int new_number = 0;

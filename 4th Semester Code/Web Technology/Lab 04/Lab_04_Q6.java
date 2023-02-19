@@ -1,5 +1,4 @@
 import java.util.*;
-import java.lang.Math.*;
 public class Lab_04_Q6 {
     public static void main(String args[]){
 
@@ -8,7 +7,7 @@ public class Lab_04_Q6 {
         System.out.print("Enter the Number : ");
         if(sc.hasNextInt())
             num = sc.nextInt();
-
+        sc.close();
         int flag = 0;
         for(int i = 2 ;i <= Math.sqrt(num) ; i++){
             if(num%i == 0){
